@@ -1,0 +1,55 @@
+<header>
+  <h1>Bid Now!</h1>
+  <a href='#'(click)='logOut()'>Logout</a>
+</header>
+<main>
+  <div id=bidContainer>
+    <div class="product">
+      <div class="productBox">
+        <p>{{products[0].name}}</p>
+        <img [src]='products[0].img' alt="NO PICTURE AVAILABLE">
+        <form (submit)='placeBid(1, bids1)'>
+          <input type="number" name="bidAmount" [(ngModel)] = bid1.amount #bids1 = ngModel><input type="submit" value="bid">
+        </form>
+      </div>
+      <label>Curent Bids:</label>
+      <div class="currentBids">
+        <div *ngFor='let bid of products[0].bids'>
+          <p *ngIf='bid._user !== undefined'>{{bid._user.name}} : ${{bid.amount}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="product">
+      <div class="productBox">
+        <p>{{products[1].name}}</p>
+        <img [src]='products[1].img' alt="NO PICTURE AVAILABLE">
+        <form (submit)='placeBid(2, bids2)'>
+          <input type="number" name="bidAmount" [(ngModel)] = bid2.amount #bids2 = ngModel><input type="submit" value="bid">
+        </form>
+      </div>
+      <label>Curent Bids:</label>
+      <div class="currentBids">
+        <div *ngFor='let bid of products[1].bids'>
+          <p *ngIf='bid._user !== undefined'>{{bid._user.name}} : ${{bid.amount}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="product">
+      <div class="productBox">
+        <p>{{products[2].name}}</p>
+        <img [src]='products[2].img' alt="NO PICTURE AVAILABLE">
+        <form (submit)='placeBid(3, bids3)'>
+          <input type="number" name="bidAmount" [(ngModel)] = bid3.amount #bids3 = ngModel><input type="submit" value="bid">
+        </form>
+      </div>
+      <label>Curent Bids:</label>
+      <div class="currentBids">
+        <div *ngFor='let bid of products[2].bids'>
+          <p *ngIf='bid._user !== undefined'>{{bid._user.name}} : ${{bid.amount}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h3 *ngIf='error'>{{error}}</h3>
+<button type="button"  (click)='alerted()'>End bid</button>
+</main>
